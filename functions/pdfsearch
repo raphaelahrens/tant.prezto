@@ -1,0 +1,15 @@
+#
+# Search trou pdfs
+#
+#
+
+function pdfsearch {
+    search_string=$1
+    find . -iname '*.pdf' | while read filename
+    do
+        echo -e "\033[34;1m// === PDF Document:\033[33;1m $filename\033[0m"
+        pdftotext -q -enc ASCII7 "$filename" - | grep -s --color=always -i $search_string
+    done
+}
+
+pdfsearch "$@"
