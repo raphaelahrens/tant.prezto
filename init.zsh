@@ -23,7 +23,6 @@ bindkey "^[[6~" history-search-forward  # PageDown
 
 alias less="less -R"
 alias feh="feh --magick-timeout 0"
-alias vim="TERM='xterm-256color' vim"
 # Disable correction.
 alias ack='nocorrect ack'
 alias cd='nocorrect cd'
