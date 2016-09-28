@@ -18,8 +18,8 @@ setopt CORRECT
 #
 
 # Customize to your needs...
-bindkey "^[[5~" history-search-backward # PageUp
-bindkey "^[[6~" history-search-forward  # PageDown
+bindkey "^[[5~" history-beginning-search-backward # PageUp
+bindkey "^[[6~" history-beginning-search-forward  # PageDown
 
 alias less="less -R"
 alias feh="feh --magick-timeout 0"
