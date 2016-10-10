@@ -56,17 +56,13 @@ alias mkdir="${aliases[mkdir]:-mkdir} -p"
 alias type='type -a'
 
 # ls
+#    Define colors for the completion system.
+export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg=36;40;07:tw=32;40;07:ow=33;40;07:'
 if is-callable 'dircolors'; then
   # GNU Core Utilities
   alias ls='ls --group-directories-first'
 
   if zstyle -t ':prezto:module:tant:ls' color; then
-    if [[ -s "$HOME/.dir_colors" ]]; then
-      eval "$(dircolors --sh "$HOME/.dir_colors")"
-    else
-      eval "$(dircolors --sh)"
-    fi
-
     alias ls="${aliases[ls]:-ls} --color=auto"
   else
     alias ls="${aliases[ls]:-ls} -F"
@@ -76,9 +72,6 @@ else
   if zstyle -t ':prezto:module:tant:ls' color; then
     # Define colors for BSD ls.
     export LSCOLORS='exfxcxdxbxGxDxabagacad'
-
-    # Define colors for the completion system.
-    export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg=36;40;07:tw=32;40;07:ow=33;40;07:'
 
     alias ls="${aliases[ls]:-ls} -G"
   else
@@ -142,24 +135,25 @@ function psu {
   ps -U "${1:-$LOGNAME}" -o 'pid,%cpu,%mem,command' "${(@)argv[2,-1]}"
 }
 function owner_path {
-	if [ $# -eq 0 ]; then
-	     printf 'usage:\n   owner_path $dir\n'
-	     return 1
+	if [[ $# -eq 0 ]]; then
+        printf 'usage:\n   owner_path $dir\n'
+        return 1
 	fi
 	l_path=$1
-	while [ "$l_path" != / -a "$l_path" != . ]; do
-	     ls -ld $l_path
-	     l_path=$(dirname $l_path)
+	while [[ $l_path != "/" && $l_path != "." ]]; do
+        ls -ld $l_path
+        l_path=$(dirname $l_path)
 	done | sed '1!G;h;$!d' | column -t
 }
 
 #disable all screenssaving features for x hours
 function watch_movie {
-    if [ $# -ge 1 ]; then
-        if [ $1 -gt 0 ]; then
+    if [[ $# -ge 1 ]]; then
+        if [[ $1 -gt 0 ]]; then
            sleep_time=$1
         else
             printf "Usage:\n watch_movie [time in h]\n"
+            return 1
         fi
     else
         sleep_time=3
