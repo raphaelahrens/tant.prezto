@@ -21,6 +21,9 @@ setopt CORRECT
 bindkey "^[[5~" history-beginning-search-backward # PageUp
 bindkey "^[[6~" history-beginning-search-forward  # PageDown
 
+bindkey -s '\033[32;2u' ' '
+bindkey -s '\033[32;6u' ' '
+
 alias less="less -R"
 alias feh="feh --magick-timeout 0"
 # Disable correction.
