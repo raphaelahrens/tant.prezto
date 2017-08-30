@@ -164,3 +164,11 @@ function watch_movie {
 	xset s off -dpms;
 	(sleep $(( 60*60*$sleep_time )); xset s on +dpms)&
 }
+
+# Print the current tasks and appointments
+if (( $+commands[doto] )); then
+  if [[ -t 0 || -t 1 ]]; then
+    doto ls
+    print
+  fi
+fi
