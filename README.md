@@ -75,10 +75,6 @@ Functions
   - `mkcd` makes a directory and changes to it.
   - `pdfsearch` search throug pdfs
 
-### VIM
-
-  - `addword` Adds a word to the dictionary file
-
 ### Developer
 
   - `diff` highlights diff output (requires `colordiff` or `Git`).
