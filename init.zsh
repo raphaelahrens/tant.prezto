@@ -166,9 +166,9 @@ function watch_movie {
 }
 
 # Print the current tasks and appointments
-if (( $+commands[doto] )); then
+if (( $+commands[ttdl] )); then
   if [[ -t 0 || -t 1 ]]; then
-    doto ls
+    ttdl
     print
   fi
 fi
