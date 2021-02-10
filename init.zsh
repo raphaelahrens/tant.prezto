@@ -25,7 +25,7 @@ bindkey -s '\033[32;2u' ' '
 bindkey -s '\033[32;6u' ' '
 
 alias less="less -R"
-alias feh="feh --magick-timeout 0"
+alias feh="feh --conversion-timeout 0"
 # Disable correction.
 alias ack='nocorrect ack'
 alias cd='nocorrect cd'
